@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Claude Code: personal settings, and skills restored from skills-lock.json
+.claude/settings.local.json
+.claude/skills/
+
+# Generated test and inspection output
+.playwright-mcp/
+.taste-skill/
+playwright-report/
+test-results/
+
+# Downloaded originals from the open collections; the resized copies the
+# site serves are in public/media and the sources in media-src/archive
+assets/

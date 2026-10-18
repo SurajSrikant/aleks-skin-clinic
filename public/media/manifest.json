@@ -1,0 +1,98 @@
+{
+  "body-device": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.8
+  },
+  "skin-dewy": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.8013
+  },
+  "portrait-calm": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 1.5
+  },
+  "cream-swatch": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.9399
+  },
+  "peel-application": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.6667
+  },
+  "clinic-interior": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.6667
+  },
+  "consultation-hands": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.6667
+  },
+  "portrait-glow": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.8
+  },
+  "microneedling": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 1.5
+  },
+  "injection-forehead": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 1.5
+  },
+  "injection-lips": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.6668
+  },
+  "body-aftercare": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "aspectRatio": 0.6616
+  }
+}

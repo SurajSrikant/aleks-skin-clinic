@@ -1,0 +1,191 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@theme {
+  /* ---- Palette ------------------------------------------------------- */
+  --color-cream: #f7f2ec;
+  --color-shell: #f0e6de;
+  --color-shell-deep: #e3d2c7;
+  --color-blush: #e8d6ce;
+  --color-dune: #dcc8b8;
+  --color-dune-deep: #cdb7a6;
+  --color-sand: #c9b49f;
+  --color-sand-deep: #bca592;
+  --color-clay: #b98f86;
+  --color-haze: #8c7a70;
+  --color-stone: #7a6a62;
+  --color-bark: #6e5a50;
+  --color-bark-deep: #5f4d45;
+  --color-mocha: #5a4d47;
+  --color-ink: #403531;
+
+  /* ---- Type ---------------------------------------------------------- */
+  --font-display: 'Bodoni Moda', serif;
+  --font-body: Karla, system-ui, sans-serif;
+
+  /* Five steps do all the visible work: display, heading, statement, body,
+     small. Anything else is a sixth size and needs a reason. */
+  --text-display: clamp(36px, 7.4vw, 120px);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.02em;
+  --text-heading: clamp(32px, 4.6vw, 68px);
+  --text-heading--line-height: 1;
+  --text-heading--letter-spacing: -0.015em;
+  --text-statement: clamp(22px, 2.2vw, 32px);
+  --text-statement--line-height: 1.25;
+  --text-body: clamp(17px, 1.2vw, 19px);
+  --text-body--line-height: 1.6;
+  --text-small: 15px;
+  --text-small--line-height: 1.5;
+
+  /* ---- Rhythm -------------------------------------------------------- */
+  --spacing-gutter: clamp(20px, 5vw, 72px);
+  --spacing-section: clamp(96px, 12vw, 200px);
+  --spacing-section-sm: clamp(72px, 9vw, 144px);
+  --spacing-shelf: clamp(48px, 7vw, 104px);
+
+  /* ---- Motion -------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@layer base {
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Every link in this design carries its own colour, so inherit by default
+     rather than fight explicit utilities on specificity. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--color-blush);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bark-deep);
+    outline-offset: 3px;
+  }
+}
+
+/* Hides the scrollbar without disabling the scroll. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---- Buttons ---------------------------------------------------------- */
+/* One shape for the whole site: square corners, flat fill, sentence case. */
+
+@utility btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 180ms ease,
+    color 180ms ease;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* The action on pale ground. */
+@utility btn-primary {
+  background: var(--color-bark-deep);
+  color: var(--color-cream);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-ink);
+    }
+  }
+}
+
+/* The action on photographs and the dark ground: paper with ink type. */
+@utility btn-paper {
+  background: var(--color-cream);
+  color: var(--color-ink);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-blush);
+    }
+  }
+}
+
+/* A text link that answers the pointer with its underline. */
+@utility link {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.25em;
+  transition:
+    text-decoration-color 180ms ease,
+    color 180ms ease;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+/* ---- Photography -------------------------------------------------------- */
+
+/* Hero photography and footage run cooler and brighter than the palette.
+   Warming and dropping it back keeps cream type legible over any frame, and
+   stops clinical white-blue imagery fighting the warm brand. Applied to the
+   wrapper, so it carries to the image or video inside. */
+@utility media-tone {
+  filter: saturate(0.8) sepia(0.2) brightness(0.7) contrast(1.05);
+}
+
+/* The home film carries the largest type on the site over a pale, clinical
+   room, so it is dropped back further than the other photographs. */
+@utility media-tone-deep {
+  filter: saturate(0.85) sepia(0.3) brightness(0.62) contrast(1.25);
+}
+
+/* The archival street photograph: warmed into the palette and dropped back
+   further, because the whole closing line of type sits on it. */
+@utility media-archive {
+  filter: sepia(0.35) brightness(0.6) contrast(1.05);
+}
+
+/* Colour photographs of the street today: the sky and paint are pulled down
+   towards the palette so they sit beside the archive print, not against it. */
+@utility media-quiet {
+  filter: saturate(0.55) sepia(0.2) brightness(0.92);
+}
+
+/* A thumb-sized hit area around a text link, without moving the layout.
+   --tap sets how far it reaches above and below. */
+@utility tap {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: calc(-1 * var(--tap, 12px)) -6px;
+  }
+}

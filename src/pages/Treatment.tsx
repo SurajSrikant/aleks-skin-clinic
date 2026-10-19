@@ -128,7 +128,7 @@ export function Treatment() {
         </div>
       </section>
 
-      <section className="bg-shell px-gutter py-section-sm">
+      {/* <section className="bg-shell px-gutter py-section-sm">
         <h2 className="mb-[clamp(28px,4vw,48px)] font-display text-heading">Related</h2>
         <PictureRow
           items={related.map((item) => ({
@@ -139,7 +139,8 @@ export function Treatment() {
             text: item.summary,
           }))}
         />
-      </section>
+      </section> */}
     </>
   )
 }
+// 

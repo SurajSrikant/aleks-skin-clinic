@@ -81,7 +81,7 @@ export function Contact() {
       </section>
 
       {/* The street outside, then and now: a pair at different sizes. */}
-      <section className="grid items-end gap-x-6 gap-y-10 px-gutter lg:grid-cols-12">
+      {/* <section className="grid items-end gap-x-6 gap-y-10 px-gutter lg:grid-cols-12">
         <figure className="lg:col-span-8">
           <Shutter from="left" className="aspect-[3/2] w-full">
             <picture className="media-archive block h-full w-full">
@@ -134,9 +134,9 @@ export function Contact() {
             </a>
           </figcaption>
         </figure>
-      </section>
+      </section> */}
 
-      <section className="px-gutter py-section-sm">
+      <section className="px-gutter pb-section-sm">
         <div className="grid items-start gap-y-14 lg:grid-cols-12 lg:gap-x-6">
           <Reveal className="bg-blush lg:col-span-5">
             <Item>

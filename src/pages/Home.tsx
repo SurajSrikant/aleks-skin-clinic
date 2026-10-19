@@ -58,7 +58,7 @@ function Hero() {
 
       {/* The film stays light, as the room is; the title sits on a cut of the
           page's own ground rather than on a darkened picture. */}
-      <m.div
+      {/* <m.div
         style={{ y: lift }}
         className="absolute bottom-0 left-0 w-full bg-cream px-gutter pt-[clamp(28px,3.5vw,48px)] pb-[clamp(28px,3.5vw,48px)] lg:w-[min(78%,1120px)]"
       >
@@ -79,7 +79,7 @@ function Hero() {
           </p>
           <BookingButton className="shrink-0 self-start px-7 py-4 sm:self-auto" />
         </m.div>
-      </m.div>
+      </m.div> */}
     </header>
   )
 }
@@ -91,7 +91,7 @@ export function Home() {
 
       {/* ---- Approach: one photograph on the left, the argument beside it,
               the room's promise closing the column at the photograph's foot -- */}
-      <section className="px-gutter py-section">
+      {/* <section className="px-gutter py-section">
         <Reveal className="grid gap-y-10 lg:grid-cols-12 lg:gap-x-6">
           <Item className="lg:col-span-5">
             <Shutter>
@@ -120,19 +120,19 @@ export function Home() {
             </Item>
           </div>
         </Reveal>
-      </section>
+      </section> */}
 
       {/* ---- Fields of practice ------------------------------------------- */}
-      <section className="px-gutter pb-section">
+      <section className="px-gutter py-section">
         <Lines
-          lines={['Aesthetics meets', 'longevity']}
+          lines={['Treatments', 'offered']}
           className="mb-[clamp(48px,7vw,96px)] font-display text-heading text-ink"
         />
         <FieldStack />
       </section>
 
       {/* ---- Signature treatments ------------------------------------------ */}
-      <section className="bg-blush pt-section-sm pb-[clamp(28px,3vw,40px)]">
+      {/* <section className="bg-blush pt-section-sm pb-[clamp(28px,3vw,40px)]">
         <div className="px-gutter lg:grid lg:grid-cols-12 lg:gap-x-6">
           <Lines
             lines={['What patients', 'come to us for']}
@@ -145,7 +145,7 @@ export function Home() {
         <p className="mt-5 px-gutter text-small text-bark-deep">
           Prices are starting points. The consultation sets the plan, and the price with it.
         </p>
-      </section>
+      </section> */}
 
       {/* ---- Closing: the street outside, the consultation, the hours ------ */}
       <section className="relative lg:h-[90svh] lg:min-h-[640px]">

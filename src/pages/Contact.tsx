@@ -5,7 +5,6 @@ import { ImageSlot } from '../components/ImageSlot'
 import { OpenStatus } from '../components/OpenStatus'
 import { Item, Lines, Reveal, Shutter } from '../components/Reveal'
 import { CLINIC } from '../data/clinic'
-import { AVENUE, AVENUE_TODAY } from '../data/media'
 
 const labelClass = 'flex flex-col gap-1 text-small text-bark-deep'
 const fieldClass =

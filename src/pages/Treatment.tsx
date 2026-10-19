@@ -4,15 +4,13 @@ import { BookingButton } from '../components/BookingButton'
 import { FaqList } from '../components/FaqList'
 import { ImageSlot } from '../components/ImageSlot'
 import { PageHero } from '../components/PageHero'
-import { PictureRow } from '../components/PictureRow'
+// import { PictureRow } from '../components/PictureRow'
 import { Item, Reveal } from '../components/Reveal'
 import { NotFound } from './NotFound'
 import {
   GENERIC,
   categoryPath,
-  findTreatment,
-  relatedTreatments,
-  treatmentPath,
+  findTreatment
 } from '../data/clinic'
 import { treatmentMedia } from '../data/media'
 
@@ -26,7 +24,7 @@ export function Treatment() {
 
   const { treatment, category } = found
   const expect = treatment.expect ?? GENERIC.expect
-  const related = relatedTreatments(found)
+  //const related = relatedTreatments(found)
 
   return (
     <>

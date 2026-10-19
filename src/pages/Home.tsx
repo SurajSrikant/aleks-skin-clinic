@@ -1,15 +1,14 @@
 import { useRef } from 'react'
 import { m, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { BookingButton } from '../components/BookingButton'
-import { ImageSlot } from '../components/ImageSlot'
+// import { ImageSlot } from '../components/ImageSlot'
 import { OpenStatus } from '../components/OpenStatus'
 import { Item, Lines, Reveal, Shutter } from '../components/Reveal'
 import { FieldStack } from '../components/home/FieldStack'
-import { SignatureBand } from '../components/home/SignatureBand'
 import { CLINIC } from '../data/clinic'
 import { AVENUE, HERO_VIDEO } from '../data/media'
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const
+// const EASE_OUT = [0.22, 1, 0.36, 1] as const
 
 /**
  * The first screen is the clinic itself, full-bleed, opening like a shutter.
@@ -21,7 +20,7 @@ function Hero() {
   const reduced = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
-  const lift = useTransform(scrollYProgress, [0, 1], [0, -80])
+  //const lift = useTransform(scrollYProgress, [0, 1], [0, -80])
 
   return (
     <header ref={ref} className="relative h-svh min-h-[560px] overflow-hidden bg-ink">

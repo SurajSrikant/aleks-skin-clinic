@@ -1,47 +1,31 @@
 import { Link } from 'react-router-dom'
-import { OpenStatus } from './OpenStatus'
-import { CATEGORIES, CLINIC, TREATMENTS_PATH, categoryPath } from '../data/clinic'
+import { BookingButton } from './BookingButton'
+import { CLINIC, PATHS } from '../data/clinic'
+import { useLanguage } from '../i18n/language'
 
-const softLink = 'link tap text-cream/70 [--tap:8px] hover:text-cream'
+const soft = 'link tap [--tap:8px] text-ivory/80 hover:text-ivory'
 
-/**
- * The name, fitted edge to edge. SVG text with a fixed viewBox scales with its
- * container, so it can never wrap or overflow at any width.
- */
-function Wordmark({ text, viewBox, className = '' }: { text: string; viewBox: string; className?: string }) {
-  const [, , width, height] = viewBox.split(' ').map(Number)
-  return (
-    <svg viewBox={viewBox} className={`block w-full ${className}`} aria-hidden>
-      <text
-        x="0"
-        y={height * 0.8}
-        textLength={width}
-        lengthAdjust="spacing"
-        className="fill-cream font-display"
-        style={{ fontSize: height }}
-      >
-        {text}
-      </text>
-    </svg>
-  )
-}
-
-/**
- * The close of every page: ink ground, four plain columns, then the name across
- * the full width.
- */
+/** Dark brown close to every page: address and hours, contact, and booking. */
 export function Footer() {
+  const { t } = useLanguage()
+
   return (
-    <footer className="bg-ink px-gutter pt-[clamp(80px,10vw,128px)] pb-6 text-small text-cream">
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12">
-        <div className="lg:col-span-3">
-          <p className="mb-3">Visit</p>
-          <p className="text-cream/70">
-            {CLINIC.street}, {CLINIC.city}
+    <footer className="bg-brown px-gutter pt-section pb-8 text-small text-ivory">
+      <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p className="mb-3 font-display text-statement">{CLINIC.name}</p>
+          <BookingButton variant="light" />
+        </div>
+
+        <div>
+          <p className="mb-3 font-medium">{t.footer.visit}</p>
+          <p className="text-ivory/80">
+            <a href={CLINIC.mapUrl} target="_blank" rel="noopener noreferrer" className={soft}>
+              {CLINIC.street}, {CLINIC.city}
+            </a>
           </p>
-          <OpenStatus className="mt-3 text-sand" />
-          <p className="mt-3 text-cream/70">
-            {CLINIC.hours.map((line, index) => (
+          <p className="mt-3 text-ivory/80">
+            {t.hours.map((line, index) => (
               <span key={line}>
                 {index > 0 && <br />}
                 {line}
@@ -50,70 +34,55 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="lg:col-span-5 lg:col-start-5">
-          <p className="mb-3">
-            <Link to={TREATMENTS_PATH} className="link tap [--tap:8px]">
-              Treatments
-            </Link>
-          </p>
-          <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 sm:gap-y-1.5">
-            {CATEGORIES.map((category) => (
-              <li key={category.id}>
-                <Link to={categoryPath(category.id)} className={softLink}>
-                  {category.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="lg:col-span-3 lg:col-start-10">
-          <p className="mb-3">Contact</p>
+        <div>
+          <p className="mb-3 font-medium">{t.footer.contact}</p>
           <ul className="flex flex-col gap-3 sm:gap-1.5">
             <li>
-              <a href={CLINIC.phoneHref} className={softLink}>
+              <a href={CLINIC.phoneHref} className={soft}>
                 {CLINIC.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${CLINIC.email}`} className={softLink}>
+              <a href={`mailto:${CLINIC.email}`} className={soft}>
                 {CLINIC.email}
               </a>
             </li>
             <li>
-              <a href={CLINIC.instagram} target="_blank" rel="noopener noreferrer" className={softLink}>
+              <a href={CLINIC.instagram} target="_blank" rel="noopener noreferrer" className={soft}>
                 Instagram
               </a>
             </li>
-            <li>
-              <Link to="/contact" className={softLink}>
-                Getting here
-              </Link>
-            </li>
           </ul>
         </div>
+
+        <ul className="flex flex-col gap-3 sm:gap-1.5">
+          <li>
+            <Link to={PATHS.treatments} className={soft}>
+              {t.nav.treatments}
+            </Link>
+          </li>
+          <li>
+            <Link to={PATHS.about} className={soft}>
+              {t.nav.about}
+            </Link>
+          </li>
+          <li>
+            <Link to={PATHS.contact} className={soft}>
+              {t.nav.contact}
+            </Link>
+          </li>
+        </ul>
       </div>
 
-      <div className="h-[clamp(72px,10vw,144px)]" />
-
-      <div>
-        <Wordmark text={CLINIC.name} viewBox="0 0 1000 152" className="hidden sm:block" />
-        {/* On a phone the name stacks; both lines share one size, fitted to "Klinikken". */}
-        <svg viewBox="0 0 1000 440" className="block w-full sm:hidden" aria-hidden>
-          <g className="fill-cream font-display" style={{ fontSize: 214 }}>
-            <text x="0" y="172">
-              Dr. M
-            </text>
-            <text x="0" y="400" textLength={1000} lengthAdjust="spacing">
-              Klinikken
-            </text>
-          </g>
-        </svg>
-        <p className="mt-5 flex flex-wrap justify-between gap-x-6 gap-y-1 text-cream/60">
-          <span>© 2026 {CLINIC.name}</span>
-          <span>{CLINIC.orgNo} · Privacy</span>
-        </p>
-      </div>
+      <p className="mt-section flex flex-wrap justify-between gap-x-6 gap-y-1 text-ivory/70">
+        <span>
+          © {new Date().getFullYear()} {CLINIC.name}
+        </span>
+        {/* TODO: link the privacy policy once the clinic provides one. */}
+        <span>
+          {t.footer.orgNo} {CLINIC.orgNo} · {t.footer.privacy}
+        </span>
+      </p>
     </footer>
   )
 }

@@ -10,39 +10,32 @@ interface ImageSlotProps {
   sizes?: string
   /** Set for above-the-fold images so they are not lazily loaded. */
   priority?: boolean
-  /**
-   * Which part of the photograph to keep when the slot crops it, as a CSS
-   * `object-position`. Wide, short slots crop hard, so the subject often needs
-   * pointing at explicitly.
-   */
-  objectPosition?: string
+  /** Alt text; omit to use the photograph's own description. */
+  alt?: string
 }
 
 /**
- * A fixed-shape image slot. The aspect ratio and layout come from the call
- * site, so swapping a placeholder for a photograph reflows nothing.
- *
- * Inside an element marked `group`, the image eases up on hover.
+ * A fixed-shape image slot. The aspect ratio comes from the call site, so
+ * swapping a placeholder for the clinic's own photograph reflows nothing.
  */
 export function ImageSlot({
   image,
   className = '',
   sizes = '(max-width: 640px) 100vw, 33vw',
   priority = false,
-  objectPosition,
+  alt,
 }: ImageSlotProps) {
   return (
-    <div className={`relative overflow-hidden bg-shell-deep ${className}`}>
+    <div className={`relative overflow-hidden bg-nude ${className}`}>
       {image && (
         <picture>
           <source type="image/webp" srcSet={media(image).srcSet} sizes={sizes} />
           <img
             src={media(image).src}
-            alt={media(image).alt}
+            alt={alt ?? media(image).alt}
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
-            style={objectPosition ? { objectPosition } : undefined}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-(--ease-soft) group-hover:scale-[1.03]"
+            className="absolute inset-0 h-full w-full object-cover"
           />
         </picture>
       )}

@@ -1,28 +1,38 @@
 import type { ReactNode } from 'react'
 import { BOOKING_URL } from '../data/clinic'
+import { useLanguage } from '../i18n/language'
 
 interface BookingButtonProps {
-  /** Bark on pale ground by default; `paper` for photographs and the dark footer. */
-  variant?: 'primary' | 'paper'
-  /** Padding and any layout classes. */
+  /** A Medibook link for one treatment; defaults to the general booking page. */
+  href?: string
+  /** `light` for the dark footer. */
+  variant?: 'primary' | 'light'
+  /** Accessible name when the visible label is too short to stand alone, e.g. "Book". */
+  ariaLabel?: string
   className?: string
   children?: ReactNode
 }
 
-/** The clinic books through an external system, so this always leaves the site. */
+/** Booking happens in Medibook, so this always leaves the site, in a new tab. */
 export function BookingButton({
+  href = BOOKING_URL,
   variant = 'primary',
+  ariaLabel,
   className = '',
-  children = 'Book appointment',
+  children,
 }: BookingButtonProps) {
+  const { t } = useLanguage()
+
   return (
     <a
-      href={BOOKING_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`btn ${variant === 'paper' ? 'btn-paper' : 'btn-primary'} ${className}`}
+      aria-label={ariaLabel ? `${ariaLabel} (${t.common.opensInNewTab})` : undefined}
+      className={`btn ${variant === 'light' ? 'btn-light' : 'btn-primary'} ${className}`}
     >
-      {children}
+      {children ?? t.nav.book}
+      {!ariaLabel && <span className="sr-only"> ({t.common.opensInNewTab})</span>}
     </a>
   )
 }
